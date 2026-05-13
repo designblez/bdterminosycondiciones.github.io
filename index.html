@@ -943,10 +943,10 @@
         </div>
 
         <form
-          id="form-pago"
-          action="https://https:formspree.io/f/mrejdnqg"
-          method="POST"
-          onsubmit="handleSubmit(event)"
+         id="form-pago"
+  action="https://formspree.io/f/mrejdnqg"
+  method="POST"
+  onsubmit="handleSubmit(event)"
         >
           <!-- Hidden fields -->
           <input type="hidden" name="_subject" value="[ANTICIPO] Nuevo pago recibido — Confirmación de proyecto" />
@@ -1228,22 +1228,7 @@
       }
     }
 
-    // ── DRAG AND DROP ──
-    const uploadZone = document.getElementById('upload-zone');
-    uploadZone.addEventListener('dragover', e => {
-      e.preventDefault();
-      uploadZone.classList.add('dragover');
-    });
-    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
-    uploadZone.addEventListener('drop', e => {
-      e.preventDefault();
-      uploadZone.classList.remove('dragover');
-      const fileInput = document.getElementById('file-input');
-      if (e.dataTransfer.files.length) {
-        fileInput.files = e.dataTransfer.files;
-        previewImage(fileInput);
-      }
-    });
+   
 
     // ── FORM SUBMIT ──
    async function handleSubmit(event) {
