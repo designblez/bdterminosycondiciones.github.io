@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos & Pago — Diseño Gráfico Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --panel:        #161616;
+      --border:       #1f1f1f;
+      --green:        #3ddc68;
+      --green-dim:    #2bb854;
+      --green-muted:  #1a3d28;
+      --white:        #f5f5f0;
+      --grey:         #888888;
+      --grey-light:   #555555;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* ── ACCENT BAR ── */
+    .accent-bar {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 80px 40px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-tag::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(64px, 11vw, 120px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    h1 span { color: var(--green); display: block; }
+
+    .header-desc {
+      max-width: 520px;
+      font-size: 15px;
+      color: var(--grey);
+      line-height: 1.7;
+      border-left: 2px solid var(--green-muted);
+      padding-left: 20px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ── LEFT: TÉRMINOS ── */
+    .terms-col {}
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── ANTICIPO CARDS ── */
+    .anticipo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .anticipo-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 20px 18px;
+    }
+
+    .anticipo-card.highlight {
+      border-color: var(--green-muted);
+      background: #0d1f14;
+    }
+
+    .anticipo-pct {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .anticipo-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 10px;
+    }
+
+    .anticipo-desc {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    .anticipo-card.full-width {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .anticipo-card.full-width .anticipo-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .anticipo-card.full-width .anticipo-label {
+      margin-bottom: 4px;
+    }
+
+    /* ── CLAUSULAS ── */
+    .clausulas-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .clausula {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .clausula:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .clausula-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .clausula-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      color: var(--green);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .clausula-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      flex: 1;
+    }
+
+    .clausula-arrow {
+      font-size: 18px;
+      color: var(--grey-light);
+      transition: transform 0.25s ease, color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .clausula.open .clausula-arrow {
+      transform: rotate(90deg);
+      color: var(--green);
+    }
+
+    .clausula-body {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding-top 0.25s ease;
+    }
+
+    .clausula.open .clausula-body {
+      max-height: 400px;
+      padding-top: 14px;
+    }
+
+    .clausula-body ul {
+      margin-top: 10px;
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .clausula-body li {
+      font-size: 13px;
+      color: var(--grey);
+      list-style: none;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .clausula-body li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 10px;
+      top: 2px;
+    }
+
+    /* ── RIGHT: PAGO ── */
+    .pago-col {
+      position: sticky;
+      top: 40px;
+    }
+
+    .pago-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .pago-box-header {
+      padding: 28px 32px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pago-box-body {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── ACCEPT BLOCK ── */
+    .accept-block {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .accept-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+    }
+
+    .accept-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+
+    .accept-row span {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    .accept-row span strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ── FIELD ── */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .field label .req { color: var(--green); font-size: 14px; line-height: 1; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 14px 18px;
+      border-radius: 0;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--grey-light); }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--green);
+      background: #0f1f17;
+    }
+
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-color: var(--dark);
+      padding-right: 44px;
+      cursor: pointer;
+    }
+
+    .field select option { background: var(--panel); color: var(--white); }
+
+    /* ── FILE UPLOAD ── */
+    .upload-zone {
+      border: 1px dashed var(--border);
+      background: var(--dark);
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .upload-zone:hover,
+    .upload-zone.dragover {
+      border-color: var(--green-dim);
+      background: #0f1f17;
+    }
+
+    .upload-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .upload-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: var(--grey-light);
+    }
+
+    .upload-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .upload-hint {
+      font-size: 11px;
+      color: var(--grey-light);
+    }
+
+    .upload-preview {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .upload-preview img {
+      width: 100%;
+      max-height: 160px;
+      object-fit: contain;
+      border: 1px solid var(--border);
+    }
+
+    .upload-filename {
+      font-size: 11px;
+      color: var(--green);
+      margin-top: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.1em;
+    }
+
+    /* IMGBB upload notice */
+    .imgbb-note {
+      background: var(--green-muted);
+      border: 1px solid var(--green);
+      border-left: 3px solid var(--green);
+      padding: 14px 16px;
+      font-size: 12px;
+      color: var(--green);
+      line-height: 1.5;
+    }
+
+    .imgbb-note strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* ── DIVIDER LABEL ── */
+    .divider-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── SUBMIT ── */
+    .btn-submit {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--green);
+      border: none;
+      padding: 20px 32px;
+      cursor: pointer;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+    }
+
+    .btn-submit:hover { background: var(--green-dim); }
+    .btn-submit:hover::after { transform: translateX(0); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled {
+      background: var(--grey-light);
+      cursor: not-allowed;
+    }
+
+    /* ── SUCCESS ── */
+    .success-msg {
+      display: none;
+      background: var(--green-muted);
+      border: 1px solid var(--green);
+      padding: 20px 24px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .success-msg.visible { display: block; }
+
+    /* ── DATOS DE PAGO ── */
+    .pago-info-box {
+      background: #0d1f14;
+      border: 1px solid var(--green-muted);
+      border-left: 3px solid var(--green);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .pago-info-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--green-muted);
+    }
+
+    .pago-info-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .pago-info-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      flex-shrink: 0;
+    }
+
+    .pago-info-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-align: right;
+    }
+
+    .pago-info-val.copyable {
+      cursor: pointer;
+      border-bottom: 1px dashed var(--green-muted);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .pago-info-val.copyable:hover {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+
+    .pago-info-val.copied {
+      color: var(--green) !important;
+    }
+
+    .pago-aviso {
+      font-size: 11px;
+      color: var(--grey-light);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* ── WHATSAPP BLOCK ── */
+    .wa-block {
+      background: #0a1f10;
+      border: 1px solid #1a4a22;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .wa-icon {
+      display: flex;
+      align-items: center;
+    }
+
+    .wa-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .wa-desc {
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    .btn-wa {
+      display: block;
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #0a0a0a;
+      background: #25D366;
+      padding: 14px 24px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-wa:hover { background: #1db954; }
+    .btn-wa:active { transform: scale(0.98); }
+
+    /* ── UPLOAD STATUS ── */
+    .upload-status {
+      font-size: 12px;
+      color: var(--grey);
+      text-align: center;
+      min-height: 16px;
+    }
+
+    .upload-status.loading { color: var(--green); }
+    .upload-status.done    { color: var(--green); }
+    .upload-status.error   { color: #e05252; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey-light);
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: var(--grey-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ESTADO FIRMA ── */
+    .firma-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .firma-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--grey-light);
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+
+    .firma-dot.active { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .firma-status.signed { color: var(--green); border-color: var(--green-muted); background: #0d1f14; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .pago-col { position: static; }
+    }
+
+    @media (max-width: 680px) {
+      header { padding: 48px 24px 40px; }
+      main    { padding: 40px 24px 80px; }
+      footer  { padding: 28px 24px; }
+      .anticipo-grid { grid-template-columns: 1fr; }
+      .pago-box-body { padding: 20px 20px; }
+      .pago-box-header { padding: 20px 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <span class="accent-bar"></span>
+
+  <header>
+    <p class="header-tag">Diseño Gráfico Profesional</p>
+    <h1>TÉRMINOS<span>&amp; PAGO</span></h1>
+    <p class="header-desc">
+      Leé los términos y condiciones del servicio, aceptalos y envía tu comprobante de anticipo para dar inicio al proyecto.
+    </p>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════
+         COLUMNA IZQUIERDA: T&C
+    ══════════════════════ -->
+    <div class="terms-col">
+      <p class="section-label">Documento vigente</p>
+      <h2 class="section-title">Condiciones<br>Generales</h2>
+
+      <!-- ANTICIPO -->
+      <div class="anticipo-grid">
+        <div class="anticipo-card highlight">
+          <div class="anticipo-pct">50%</div>
+          <div class="anticipo-label">Anticipo para iniciar</div>
+          <div class="anticipo-desc">Reserva agenda e inicia el proyecto. Sin anticipo confirmado no se comienza.</div>
+        </div>
+
+        <div class="anticipo-card">
+          <div class="anticipo-pct">50%</div>
+          <div class="anticipo-label">Antes de la entrega</div>
+          <div class="anticipo-desc">El saldo restante se abona antes de recibir los archivos finales.</div>
+        </div>
+
+        <div class="anticipo-card full-width">
+          <div class="anticipo-icon">⚠️</div>
+          <div>
+            <div class="anticipo-label">Anticipo no reembolsable</div>
+            <div class="anticipo-desc">Si el Cliente cancela una vez iniciado el proyecto, el anticipo queda retenido como compensación por el tiempo y agenda reservados.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLÁUSULAS ACCORDION -->
+      <div class="clausulas-list">
+
+        <div class="clausula open">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 01</span>
+            <span class="clausula-title">Alcance del Proyecto</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            Los servicios a prestar quedan definidos en la propuesta o cotización enviada al Cliente. Todo lo que no esté expresamente incluido se considera fuera del alcance y podrá cotizarse por separado. Cambios en la dirección creativa o nuevas solicitudes serán tratados como trabajo adicional.
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 02</span>
+            <span class="clausula-title">Revisiones</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            Cada proyecto incluye un número limitado de rondas de revisión, especificado en la propuesta. Una ronda = todos los comentarios consolidados en un solo mensaje.
+            <ul>
+              <li>Las revisiones deben enviarse dentro de los 3 días hábiles tras cada entrega.</li>
+              <li>Rondas adicionales o cambios fuera del alcance tienen costo extra.</li>
+              <li>Cambios solicitados después de la aprobación final generan un nuevo presupuesto.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 03</span>
+            <span class="clausula-title">Tiempos de Entrega</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            Los plazos comienzan a correr desde la confirmación del anticipo y la recepción de todos los materiales necesarios (textos, imágenes, brief, referencias). Demoras causadas por el Cliente — falta de información, respuestas tardías (+5 días hábiles) o cambios de dirección — extenderán automáticamente los plazos acordados.
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 04</span>
+            <span class="clausula-title">Pausa y Abandono de Proyecto</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            Si el Cliente no responde en más de 10 días hábiles consecutivos, el proyecto entra en pausa. Para retomarlo se aplicará una tarifa de reactivación y se acordará una nueva fecha. Proyectos pausados por más de 60 días serán considerados cancelados sin derecho a reembolso del anticipo.
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 05</span>
+            <span class="clausula-title">Derechos de Autor</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            El Diseñador es el autor original de todas las piezas creadas. Los derechos de uso comercial se transfieren al Cliente únicamente tras la recepción del pago total.
+            <ul>
+              <li>El Diseñador se reserva el derecho de mostrar el trabajo en su portafolio y redes sociales.</li>
+              <li>Los archivos editables (.ai, .psd, .fig) solo se entregan si fueron incluidos en la propuesta original.</li>
+              <li>El Cliente no puede ceder ni revender los archivos a terceros sin autorización escrita.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 06</span>
+            <span class="clausula-title">Responsabilidad del Cliente</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            El Cliente garantiza que todos los materiales entregados (textos, imágenes, logos) son de su propiedad o cuenta con los derechos necesarios para su uso. El Diseñador no se responsabiliza por errores en contenidos aprobados por el Cliente, ni por el rendimiento comercial de las piezas diseñadas.
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 07</span>
+            <span class="clausula-title">Confidencialidad</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            Ambas partes se comprometen a mantener reserva sobre información sensible compartida durante el proyecto. Esta obligación continúa vigente tras la finalización del trabajo.
+          </div>
+        </div>
+
+        <div class="clausula">
+          <div class="clausula-header" onclick="toggleClausula(this)">
+            <span class="clausula-num">Cláusula 08</span>
+            <span class="clausula-title">Aceptación de Términos</span>
+            <span class="clausula-arrow">›</span>
+          </div>
+          <div class="clausula-body">
+            El pago del anticipo, la confirmación por escrito o el inicio de cualquier intercambio de materiales implica la aceptación total de estos términos. Estos términos pueden actualizarse en cualquier momento. La versión vigente es la publicada al momento de iniciar cada proyecto.
+          </div>
+        </div>
+
+      </div><!-- /clausulas-list -->
+    </div>
+
+    <!-- ══════════════════════
+         COLUMNA DERECHA: PAGO
+    ══════════════════════ -->
+    <div class="pago-col">
+      <div class="pago-box">
+
+        <div class="pago-box-header">
+          <p class="section-label">Paso final</p>
+          <h2 class="section-title" style="font-size: clamp(28px,4vw,40px); margin-bottom:0; padding-bottom:0; border:none;">Confirmar<br>Anticipo</h2>
+        </div>
+
+        <form
+          id="form-pago"
+          action="https://formspree.io/f/REEMPLAZAR_CON_TU_ID"
+          method="POST"
+          onsubmit="handleSubmit(event)"
+        >
+          <!-- Hidden fields -->
+          <input type="hidden" name="_subject" value="[ANTICIPO] Nuevo pago recibido — Confirmación de proyecto" />
+          <input type="hidden" name="comprobante_url" id="comprobante_url" value="" />
+
+          <div class="pago-box-body">
+
+            <!-- ACEPTACIÓN T&C -->
+            <div class="divider-label">Aceptación</div>
+
+            <div class="accept-block">
+              <label class="accept-row">
+                <input type="checkbox" id="check-tc" name="acepta_terminos" value="si" onchange="updateFirmaStatus()" required />
+                <span>He leído y acepto los <strong>Términos y Condiciones</strong> del servicio, incluyendo la política de anticipo no reembolsable.</span>
+              </label>
+              <label class="accept-row">
+                <input type="checkbox" id="check-confid" name="acepta_confidencialidad" value="si" onchange="updateFirmaStatus()" required />
+                <span>Acepto la cláusula de <strong>Confidencialidad</strong> y garantizo que los materiales que entregue son de mi propiedad.</span>
+              </label>
+            </div>
+
+            <div class="firma-status" id="firma-status">
+              <div class="firma-dot" id="firma-dot"></div>
+              <span id="firma-text">Pendiente de aceptación</span>
+            </div>
+
+            <!-- DATOS DEL CLIENTE -->
+            <div class="divider-label" style="margin-top:8px;">Datos del pago</div>
+
+            <div class="field">
+              <label>Nombre / Empresa <span class="req">*</span></label>
+              <input type="text" name="nombre_cliente" placeholder="Ej: María García / Estudio Monarca" required />
+            </div>
+
+            <div class="field">
+              <label>Correo electrónico <span class="req">*</span></label>
+              <input type="email" name="email_cliente" placeholder="correo@empresa.com" required />
+            </div>
+
+            <div class="field">
+              <label>Tipo de proyecto <span class="req">*</span></label>
+              <select name="tipo_proyecto" required>
+                <option value="" disabled selected>Seleccionar...</option>
+                <option value="Identidad Visual">Identidad Visual</option>
+                <option value="Redes Sociales">Redes Sociales</option>
+                <option value="Branding Completo">Branding Completo</option>
+                <option value="Material Editorial">Material Editorial</option>
+                <option value="Packaging">Packaging</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Monto abonado <span class="req">*</span></label>
+              <input type="text" name="monto_abonado" placeholder="Ej: USD 150 / ARS 80.000" required />
+            </div>
+
+            <div class="field">
+              <label>Método de pago <span class="req">*</span></label>
+              <select name="metodo_pago" id="metodo_pago" required onchange="mostrarDatosPago(this.value)">
+                <option value="" disabled selected>Seleccionar...</option>
+                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                <option value="Pago móvil">Pago móvil</option>
+                <option value="USDT / Binance">USDT / Binance</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+            </div>
+
+            <!-- DATOS DE PAGO DINÁMICOS -->
+            <div id="datos-pago" style="display:none;">
+
+              <!-- TRANSFERENCIA -->
+              <div class="datos-metodo" id="datos-transferencia" style="display:none;">
+                <div class="pago-info-box">
+                  <div class="pago-info-tag">Transferencia Bancaria</div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Cuenta</span>
+                    <span class="pago-info-val copyable" onclick="copiar(this)" title="Clic para copiar">0134-0405-47-4051068222</span>
+                  </div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Cédula</span>
+                    <span class="pago-info-val copyable" onclick="copiar(this)" title="Clic para copiar">V-31137450</span>
+                  </div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Titular</span>
+                    <span class="pago-info-val">BLAIDER JESUS JIMENEZ GARZON</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAGO MÓVIL -->
+              <div class="datos-metodo" id="datos-pagomovil" style="display:none;">
+                <div class="pago-info-box">
+                  <div class="pago-info-tag">Pago Móvil</div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Teléfono</span>
+                    <span class="pago-info-val copyable" onclick="copiar(this)" title="Clic para copiar">0412-163-66-92</span>
+                  </div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Cédula</span>
+                    <span class="pago-info-val copyable" onclick="copiar(this)" title="Clic para copiar">V-31137450</span>
+                  </div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Banco</span>
+                    <span class="pago-info-val">BANESCO (0134)</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- BINANCE / USDT -->
+              <div class="datos-metodo" id="datos-binance" style="display:none;">
+                <div class="pago-info-box">
+                  <div class="pago-info-tag">USDT · Binance Pay</div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Correo</span>
+                    <span class="pago-info-val copyable" onclick="copiar(this)" title="Clic para copiar">blaiderj0@gmail.com</span>
+                  </div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Monedas</span>
+                    <span class="pago-info-val">USDT · BTC · ETH · BNB</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAYPAL -->
+              <div class="datos-metodo" id="datos-paypal" style="display:none;">
+                <div class="pago-info-box">
+                  <div class="pago-info-tag">PayPal</div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Correo</span>
+                    <span class="pago-info-val copyable" onclick="copiar(this)" title="Clic para copiar">blaiderj0@gmail.com</span>
+                  </div>
+                  <div class="pago-info-row">
+                    <span class="pago-info-label">Moneda</span>
+                    <span class="pago-info-val">USD</span>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /datos-pago -->
+
+
+
+            <!-- WHATSAPP COMPROBANTE -->
+            <div class="divider-label" style="margin-top:4px;">Envío de comprobante</div>
+            <div class="wa-block">
+              <div class="wa-icon">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.67 4.61 1.832 6.5L4 29l7.701-1.812A11.94 11.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="#25D366"/>
+                  <path d="M21.5 18.5c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z" fill="white"/>
+                </svg>
+              </div>
+              <div class="wa-content">
+                <p class="wa-title">Enviá tu comprobante por WhatsApp</p>
+                <p class="wa-desc">Luego de completar el formulario, enviame la foto o captura del pago directamente por WhatsApp.</p>
+              </div>
+              <a
+                href="https://api.whatsapp.com/send?phone=%2B584121636692&data=ARDkLjC-EnbFHh7X2gkjxhgq5HeC77oOphM78O_Q7xeThCsLvYDg1dbyPUmSmhS5xYbMV76XmvGCYX3NvwmaHVIrdNQOicqkLDZbwE24BQOG2JnsfGEInU8H6SlzvClTuNZStB3s0lQxjnujJUgBRau6Ig&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=PAb21jcARxrglleHRuA2FlbQIxMAABp1Fvq3WgusSeSLYROvonvexdt_igy2VYCXlOYkn0f7Wd0_Va1dcEdUlnhgY6_aem_6cedqvJa5OSPBdO9opHv6Q&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+                target="_blank"
+                class="btn-wa"
+              >
+                Enviar comprobante →
+              </a>
+            </div>
+
+            <div class="field">
+              <label>Comentarios adicionales</label>
+              <textarea name="comentarios" rows="2" placeholder="Número de transacción, observaciones..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btn-submit">
+              Confirmar Anticipo →
+            </button>
+
+            <div class="success-msg" id="success-pago">
+              ✓ Comprobante recibido.<br>Me pondré en contacto en las próximas 24 horas hábiles para confirmar el inicio del proyecto.
+            </div>
+
+          </div><!-- /pago-box-body -->
+        </form>
+      </div><!-- /pago-box -->
+    </div>
+
+  </main>
+
+  <footer>
+    <span class="footer-brand">Diseño Gráfico Profesional</span>
+    <span class="footer-note">Los datos ingresados son confidenciales y de uso exclusivo para el desarrollo del proyecto.</span>
+  </footer>
+
+  <script>
+    // ── MOSTRAR DATOS DE PAGO ──
+    function mostrarDatosPago(metodo) {
+      // Ocultar todos
+      document.querySelectorAll('.datos-metodo').forEach(el => el.style.display = 'none');
+      const contenedor = document.getElementById('datos-pago');
+
+      const map = {
+        'Transferencia bancaria': 'datos-transferencia',
+        'Pago móvil':             'datos-pagomovil',
+        'USDT / Binance':         'datos-binance',
+        'PayPal':                 'datos-paypal',
+      };
+
+      if (map[metodo]) {
+        contenedor.style.display = 'block';
+        document.getElementById(map[metodo]).style.display = 'block';
+      } else {
+        contenedor.style.display = 'none';
+      }
+    }
+
+    // ── COPIAR AL PORTAPAPELES ──
+    function copiar(el) {
+      const texto = el.textContent.trim();
+      navigator.clipboard.writeText(texto).then(() => {
+        el.classList.add('copied');
+        const original = el.textContent;
+        el.textContent = '✓ Copiado';
+        setTimeout(() => {
+          el.textContent = original;
+          el.classList.remove('copied');
+        }, 1800);
+      }).catch(() => {
+        // Fallback para navegadores sin clipboard API
+        const ta = document.createElement('textarea');
+        ta.value = texto;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        el.classList.add('copied');
+        setTimeout(() => el.classList.remove('copied'), 1800);
+      });
+    }
+
+    // ── ACCORDION CLÁUSULAS ──
+    function toggleClausula(header) {
+      const clausula = header.parentElement;
+      clausula.classList.toggle('open');
+    }
+
+    // ── FIRMA STATUS ──
+    function updateFirmaStatus() {
+      const tc     = document.getElementById('check-tc').checked;
+      const confid = document.getElementById('check-confid').checked;
+      const dot    = document.getElementById('firma-dot');
+      const text   = document.getElementById('firma-text');
+      const status = document.getElementById('firma-status');
+
+      if (tc && confid) {
+        dot.classList.add('active');
+        text.textContent = '✓ Términos aceptados';
+        status.classList.add('signed');
+      } else {
+        dot.classList.remove('active');
+        text.textContent = 'Pendiente de aceptación';
+        status.classList.remove('signed');
+      }
+    }
+
+    // ── PREVIEW LOCAL ──
+    function previewImage(input) {
+      const zone    = document.getElementById('upload-zone');
+      const preview = document.getElementById('upload-preview');
+      const img     = document.getElementById('preview-img');
+      const name    = document.getElementById('upload-filename');
+
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = e => {
+          img.src = e.target.result;
+          preview.style.display = 'block';
+          name.textContent = file.name;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // ── DRAG AND DROP ──
+    const uploadZone = document.getElementById('upload-zone');
+    uploadZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      uploadZone.classList.add('dragover');
+    });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadZone.classList.remove('dragover');
+      const fileInput = document.getElementById('file-input');
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        previewImage(fileInput);
+      }
+    });
+
+    // ── FORM SUBMIT ──
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      const form = document.getElementById('form-pago');
+      const btn  = document.getElementById('btn-submit');
+      const msg  = document.getElementById('success-pago');
+
+      // Validar que aceptó los dos checkboxes
+      const tc     = document.getElementById('check-tc').checked;
+      const confid = document.getElementById('check-confid').checked;
+      if (!tc || !confid) {
+        alert('Debés aceptar los Términos y Condiciones para continuar.');
+        return;
+      }
+
+
+      btn.textContent = 'Enviando...';
+      btn.disabled    = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method:  'POST',
+          body:    new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          document.getElementById('upload-preview').style.display = 'none';
+          updateFirmaStatus();
+          msg.classList.add('visible');
+          btn.textContent = '✓ Enviado';
+          msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          btn.textContent = 'Error — Reintentar';
+          btn.disabled    = false;
+          alert('Hubo un error al enviar. Por favor intentá nuevamente.');
+        }
+      } catch {
+        btn.textContent = 'Error — Reintentar';
+        btn.disabled    = false;
+        alert('Error de conexión. Verificá tu internet y reintentá.');
+      }
+    }
+  </script>
+
+</body>
+</html>
